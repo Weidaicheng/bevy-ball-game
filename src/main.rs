@@ -6,7 +6,7 @@ mod player;
 mod score;
 mod star;
 
-use bevy::{DefaultPlugins, prelude::App};
+use bevy::{prelude::App, DefaultPlugins};
 use camera::CameraPlugin;
 use enemy::EnemyPlugin;
 use game::GamePlugin;
@@ -18,11 +18,10 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugin(CameraPlugin)
-        .add_plugin(demo::DemoPlugin)
-        // .add_plugin(GamePlugin)
-        // .add_plugin(PlayerPlugin)
-        // .add_plugin(EnemyPlugin)
-        // .add_plugin(StarPlugin)
-        // .add_plugin(ScorePlugin)
+        .add_plugin(GamePlugin)
+        .add_plugin(PlayerPlugin)
+        .add_plugin(EnemyPlugin)
+        .add_plugin(StarPlugin)
+        .add_plugin(ScorePlugin)
         .run();
 }
