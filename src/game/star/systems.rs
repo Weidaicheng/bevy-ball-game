@@ -1,7 +1,12 @@
-use bevy::{prelude::{Commands, Query, Res, AssetServer, Transform, default, ResMut, With}, window::{Window, PrimaryWindow}, sprite::SpriteBundle, time::Time};
+use bevy::{
+    prelude::{default, AssetServer, Commands, Entity, Query, Res, ResMut, Transform, With},
+    sprite::SpriteBundle,
+    time::Time,
+    window::{PrimaryWindow, Window},
+};
 use rand::random;
 
-use super::{NUMBER_OF_STARS, components::Star, resources::StarSpawnTimer};
+use super::{components::Star, resources::StarSpawnTimer, NUMBER_OF_STARS};
 
 pub fn spawn_stars(
     mut commands: Commands,
@@ -22,6 +27,12 @@ pub fn spawn_stars(
             },
             Star {},
         ));
+    }
+}
+
+pub fn despawn_stars(mut commands: Commands, star_query: Query<Entity, With<Star>>) {
+    for star_entity in star_query.iter() {
+        commands.entity(star_entity).despawn();
     }
 }
 

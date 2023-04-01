@@ -9,8 +9,8 @@ use bevy::{
 };
 
 use crate::{
-    game::enemy::{components::Enemy, ENEMY_SIZE},
     events::GameOver,
+    game::enemy::{components::Enemy, ENEMY_SIZE},
     game::score::resources::Score,
     game::star::{components::Star, STAR_SIZE},
 };
@@ -32,6 +32,12 @@ pub fn spawn_player(
         },
         Player {},
     ));
+}
+
+pub fn despawn_player(mut commands: Commands, player_query: Query<Entity, With<Player>>) {
+    for player_entity in player_query.iter() {
+        commands.entity(player_entity).despawn();
+    }
 }
 
 pub fn player_movement(
