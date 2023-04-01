@@ -9,10 +9,10 @@ use bevy::{
 };
 
 use crate::{
-    enemy::{components::Enemy, ENEMY_SIZE},
-    game::events::GameOver,
-    score::resources::Score,
-    star::{components::Star, STAR_SIZE},
+    game::enemy::{components::Enemy, ENEMY_SIZE},
+    events::GameOver,
+    game::score::resources::Score,
+    game::star::{components::Star, STAR_SIZE},
 };
 
 use super::{components::Player, PLAYER_SIZE, PLAYER_SPEED};

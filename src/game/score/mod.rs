@@ -2,7 +2,7 @@ use bevy::prelude::Plugin;
 
 use self::{
     resources::{HighScores, Score},
-    systems::{handle_game_over, high_scores_updated, update_high_scores, update_score},
+    systems::{high_scores_updated, update_high_scores, update_score},
 };
 
 pub mod resources;
@@ -16,7 +16,6 @@ impl Plugin for ScorePlugin {
             .init_resource::<HighScores>()
             .add_system(update_score)
             .add_system(update_high_scores)
-            .add_system(high_scores_updated)
-            .add_system(handle_game_over);
+            .add_system(high_scores_updated);
     }
 }

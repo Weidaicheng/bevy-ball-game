@@ -1,14 +1,19 @@
 use bevy::prelude::Plugin;
 
-use self::{events::GameOver, systems::exit_game};
+use self::{enemy::EnemyPlugin, player::PlayerPlugin, score::ScorePlugin, star::StarPlugin};
 
-pub mod events;
-mod systems;
+mod enemy;
+mod player;
+mod score;
+mod star;
 
 pub struct GamePlugin;
 
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut bevy::prelude::App) {
-        app.add_event::<GameOver>().add_system(exit_game);
+        app.add_plugin(EnemyPlugin)
+            .add_plugin(PlayerPlugin)
+            .add_plugin(ScorePlugin)
+            .add_plugin(StarPlugin);
     }
 }
